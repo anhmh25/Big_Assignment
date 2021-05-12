@@ -88,7 +88,7 @@ bool CheckColission(Ninja ninja, SDL_Rect* ninja_rect, Obstacles obstacle, SDL_R
 
 bool CheckObstaclesColission(Ninja ninja, Obstacles grave1, Obstacles grave2, Obstacles ghost1, SDL_Rect* char_clip, SDL_Rect* Obstacles_clip = nullptr);
 
-void CheckPosition(Obstacles grave1, Obstacles grave2, Obstacles ghost1);
+void CheckPosition(Obstacles &grave1, Obstacles &grave2, Obstacles &ghost1);
 
 void ControlNinjaFrame(int& frame);
 

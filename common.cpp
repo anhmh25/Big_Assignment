@@ -213,16 +213,16 @@ bool CheckObstaclesColission(Ninja ninja, Obstacles grave1, Obstacles grave2, Ob
 	return false;
 }
 
-void CheckPosition(Obstacles grave1, Obstacles grave2, Obstacles ghost1) {
+void CheckPosition(Obstacles &grave1, Obstacles &grave2, Obstacles &ghost1) {
 	while (abs(grave2.posX - grave1.posX) <= MIN_DISTANCE) {
-		if (grave2.posX > grave1.posX)grave2.posX  = grave1.posX  + rand() % SCREEN_WIDTH;
-		else grave1.posX = grave2.posX + rand() % SCREEN_WIDTH;
+		if (grave2.posX > grave1.posX)grave2.posX  = grave1.posX  + rand() % SCREEN_WIDTH + MIN_DISTANCE;
+		else grave1.posX = grave2.posX + rand() % SCREEN_WIDTH + MIN_DISTANCE;
 	}
 	if (abs(ghost1.getPosX() - grave1.getPosX()) <= MIN_DISTANCE && abs(ghost1.getPosX() - grave2.getPosX() <= MIN_DISTANCE)) {
-		if (abs(grave1.posX - grave2.posX) >= SCREEN_WIDTH) ghost1.posX = (grave1.posX + grave2.posX) / 2 + rand() % 100;
+		if (abs(grave1.posX - grave2.posX) >= SCREEN_WIDTH) ghost1.posX = grave2.posX  - 200 - rand() % MIN_DISTANCE;
 		else {
-			if (grave2.posX > grave1.posX)ghost1.posX = grave2.posX + MIN_DISTANCE;
-			else ghost1.posX = grave1.posX + MIN_DISTANCE;
+			if (grave2.posX > grave1.posX)ghost1.posX = grave2.posX + rand() % MIN_DISTANCE;
+			else ghost1.posX = grave1.posX + rand() % MIN_DISTANCE;
 		}
 	}
 }

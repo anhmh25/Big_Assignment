@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
 			Obstacles grave1(GROUND_OBSTACLES_1);
 			Obstacles grave2(GROUND_OBSTACLES_2);
 			Obstacles ghost1(FLY_OBSTACLES);
-
+			CheckPosition(grave1, grave2, ghost1);
 			Mix_PlayMusic(music, -1);
 			loadObstacles(grave1, grave2, ghost1, ghost, renderer);
 			int OffsetSpeed_Ground = OFFSET_SPEED;
@@ -145,10 +145,10 @@ int main(int argc, char* argv[]) {
 						ninja_des = &ninja_jumping[5];
 						ninja.render(ninja_des, renderer, NinjaTexture2);
 					}
-					
+					CheckPosition(grave1, grave2, ghost1);
 					grave1.move(acceleration);
 					grave1.render(renderer);
-					
+					CheckPosition(grave1, grave2, ghost1);
 					grave2.move(acceleration);
 					grave2.render(renderer);
 					CheckPosition(grave1, grave2, ghost1);
@@ -157,7 +157,7 @@ int main(int argc, char* argv[]) {
 						ghost1.move(acceleration);
 						ghost1.render(renderer, Obstacles_des);
 					}
-					
+					CheckPosition(grave1, grave2, ghost1);
 
 					UpdateHighScore("highscore.txt", score, highscore);
 					DrawPlayerScore(ScoreSpace, ScoreTexture, textColor1, renderer, font1, score);
